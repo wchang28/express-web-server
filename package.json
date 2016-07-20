@@ -1,0 +1,23 @@
+{
+  "name": "express-web-server",
+  "version": "0.0.1",
+  "description": "Express-based Web Server",
+  "main": "./js/index.js",
+  "typings": "./js/index.d.ts",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wchang28/express-web-server.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "web-server"
+  ],
+  "author": "Wen Chang",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
