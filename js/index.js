@@ -1,7 +1,7 @@
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
-function startServer(webServerConfig, app, done) {
+function startServer(webServerConfig, app, done, errorCallback) {
     var server = null;
     var wsConfig = null;
     if (webServerConfig.https) {
@@ -28,6 +28,10 @@ function startServer(webServerConfig, app, done) {
     }
     var port = (wsConfig.port ? wsConfig.port : (webServerConfig.https ? 443 : 80));
     var host = (wsConfig.host ? wsConfig.host : "0.0.0.0");
+    server.on('error', function (err) {
+        if (typeof errorCallback === 'function')
+            errorCallback(err);
+    });
     server.listen(port, host, function () {
         var host = server.address().address;
         var port = server.address().port;

@@ -15,5 +15,5 @@ export interface IWebServerConfig {
     http?: IHTTPServerConfig;
     https?: IHTTPSServerConfig;
 }
-declare function startServer(webServerConfig: IWebServerConfig, app: core.Express, done: (secure: boolean, host: string, port: number) => void): void;
+declare function startServer(webServerConfig: IWebServerConfig, app: core.Express, done: (secure: boolean, host: string, port: number) => void, errorCallback?: (err: any) => void): void;
 export { startServer };

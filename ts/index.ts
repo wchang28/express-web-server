@@ -25,7 +25,7 @@ export interface IWebServerConfig {
 	https?: IHTTPSServerConfig;
 }
 
-function startServer(webServerConfig: IWebServerConfig, app: core.Express, done:(secure: boolean, host:string, port:number) => void) : void {
+function startServer(webServerConfig: IWebServerConfig, app: core.Express, done:(secure: boolean, host:string, port:number) => void, errorCallback?:(err:any) => void ) : void {
 	let server: net.Server = null;
 	let wsConfig: IHTTPServerConfig = null;
 	if (webServerConfig.https) {
@@ -51,6 +51,9 @@ function startServer(webServerConfig: IWebServerConfig, app: core.Express, done:
 	}
 	let port = (wsConfig.port ? wsConfig.port : (webServerConfig.https ? 443 : 80));
 	let host = (wsConfig.host ? wsConfig.host : "0.0.0.0");	
+	server.on('error', (err:any) => {
+		if (typeof errorCallback === 'function') errorCallback(err);
+	});
 	server.listen(port, host, () => {
 		let host = server.address().address;
 		let port = server.address().port;
