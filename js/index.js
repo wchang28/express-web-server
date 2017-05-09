@@ -1,7 +1,8 @@
 "use strict";
-var http = require('http');
-var https = require('https');
-var fs = require('fs');
+Object.defineProperty(exports, "__esModule", { value: true });
+var http = require("http");
+var https = require("https");
+var fs = require("fs");
 function startServer(webServerConfig, app, done, errorCallback) {
     var server = null;
     var wsConfig = null;

@@ -1,4 +1,3 @@
-/// <reference types="express-serve-static-core" />
 import * as core from 'express-serve-static-core';
 export interface IHTTPServerConfig {
     port?: number;
